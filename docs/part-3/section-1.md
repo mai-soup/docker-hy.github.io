@@ -25,7 +25,7 @@ The description/readme says:
 
 We can see that the image is built from <https://git.launchpad.net/cloud-images/+oci/ubuntu-base>.
 
-Let's take a closer look at Ubuntu to verify where it comes from. If you click the Dockerfile link of <https://hub.docker.com/r/_/ubuntu/> you'll be given a json file instead of the Dockerfile contents. The digest seems to contain the valid digest for a single architecture version listed on Docker Hub (amd64). But after downloading it and checking the digest `docker pull ubuntu:22.04 && docker images --digests` the result does not match up.
+Let's take a closer look at Ubuntu to verify where it comes from. If you click the Dockerfile link of <https://hub.docker.com/r/_/ubuntu/> you'll be given a json file instead of the Dockerfile contents. The digest seems to contain the valid digest for a single architecture version listed on Docker Hub (amd64). But after downloading it and checking the digest with `docker pull ubuntu:22.04 && docker images --digests` the result does not match up.
 
 We find a Dockerfile from the repository [here](https://git.launchpad.net/cloud-images/+oci/ubuntu-base/tree/Dockerfile?h=jammy-22.04). We can increase trust that it's the same as the image we downloaded with `image history`:
 
@@ -39,11 +39,11 @@ The first line states that the image starts FROM a **special** image "scratch" t
 
 Notice how the file is not extracted at any point. The `ADD` instruction [documentation](https://docs.docker.com/engine/reference/builder/#add) states that "If src is a local tar archive in a recognized compression format (identity, gzip, bzip2 or xz) then it is unpacked as a directory."
 
-We could verify the checksums of the file if we were interested. For the Ubuntu image automation from the launchpad takes care of creating the PRs to docker-library and the maintainers of the official images repository verify the PRs.
+We could verify the checksums of the file if we were interested. For the Ubuntu image, automation from Launchpad takes care of creating the PRs to docker-library and the maintainers of the official images repository verify the PRs.
 
 You can also visit the Docker Hub page for the image tag itself, which shows the layers and warns about potential security issues. Note how many different problems it finds [here](https://hub.docker.com/layers/library/ubuntu/22.04/images/sha256-b2175cd4cfdd5cdb1740b0e6ec6bbb4ea4892801c0ad5101a81f694152b6c559?context=explore).
 
-Now we have learned that the build processes are open and we can verify it if we have the need. In addition, we learned that there's nothing that makes the "official" images special.
+Now we have learned that the build processes are open and we can verify them if we have the need. In addition, we learned that there's nothing that makes the "official" images special.
 
 #### "You can't trust code that you did not totally create yourself."
 ###### - Ken Thompson (1984, Reflections on Trusting Trust)
