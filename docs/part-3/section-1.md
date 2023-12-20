@@ -6,7 +6,7 @@ We've focused on using Docker as a tool to solve various types of problems. Mean
 
 The goal for this part is to look into some of the best container practices and improve our processes.
 
-In [part 1](/part-1/section-3#exercises-15---16) we talked about how [Alpine Linux](https://www.alpinelinux.org/) image can be quite a bit than Ubuntu but didn't really care about why we'd choose one above the other. On top of that, we have been running the applications as [root](https://en.wikipedia.org/wiki/Superuser), i.e. the super user, which is potentially dangerous.
+In [part 1](/part-1/section-3#exercises-15---16) we talked about how [Alpine Linux](https://www.alpinelinux.org/) image can be quite a bit smaller and simpler than Ubuntu but didn't really care about why we'd choose one above the other. On top of that, we have been running the applications as [root](https://en.wikipedia.org/wiki/Superuser), i.e. the super user, which is potentially dangerous.
 
 ## Look into official images
 
