@@ -2,7 +2,7 @@
 title: 'Deployment pipelines'
 ---
 
-[CI/CD](https://en.wikipedia.org/wiki/CI/CD) pipeline (sometimes called deployment pipeline) is a corner stone of DevOps.
+The [CI/CD](https://en.wikipedia.org/wiki/CI/CD) pipeline (sometimes called deployment pipeline) is a corner stone of DevOps.
 According to [Gitlab](https://about.gitlab.com/topics/ci-cd/):
 
   _CI/CD automates much or all of the manual human intervention traditionally needed to get new code from a commit into production. With a CI/CD pipeline, development teams can make changes to code that are then automatically tested and pushed out for delivery and deployment. Get CI/CD right and downtime is minimized and code releases happen faster._
@@ -13,7 +13,7 @@ Since we cannot assume that everyone has access to their own server, we will dem
 
 We will use [GitHub Actions](https://github.com/features/actions) to build an image and push the image to Docker Hub, and then use a project called [Watchtower](https://containrrr.dev/watchtower/) to automatically pull and restart the new image in the target machine.
 
-As example, we will look repository [https://github.com/docker-hy/docker-hy.github.io](https://github.com/docker-hy/docker-hy.github.io), that is, the material of this course.
+As an example, we will look at the repository [https://github.com/docker-hy/docker-hy.github.io](https://github.com/docker-hy/docker-hy.github.io), that is, the material of this course.
 
 As was said [GitHub Actions](https://github.com/features/actions) is used to implement the first part of the deployment pipeline. The [documentation](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) gives the following overview:
 
@@ -21,7 +21,7 @@ _GitHub Actions is a continuous integration and continuous delivery (CI/CD) plat
 
 The project defines a _workflow_ with GitHub Actions that builds a Docker image and pushes it to Docker Hub every time the code is pushed to the GitHub repository.
 
-Let us now see how the workflow definition looks. It is stored in the file _deploy.yml_ inside the _.github/workflows_ directory:
+Let us now see how the workflow definition looks. It is stored in the file _deploy.yaml_ inside the _.github/workflows_ directory:
 
 ```yaml
 name: Release DevOps with Docker # Name of the workflow
@@ -81,7 +81,7 @@ Note that now anyone with access to your Docker Hub also has access to your PC t
 
 :::
 
-Watchtower can be run eg. using the following Docker Compose file:
+Watchtower can be run e.g. using the following Docker Compose file:
 
 ```yaml
 version: "3.8"
@@ -105,9 +105,9 @@ One needs to be careful when starting Watchtower with _docker compose up_,  sinc
   Create now a similar deployment pipeline for a simple NodeJS/Express app found
 [here](https://github.com/docker-hy/material-applications/tree/main/express-app).
 
-  Either clone the project or copy the files to your own repository. Set up similar deployment pipeline (or the "first half") using GitHub Actions that was just described. Ensure that a new image gets pushed to Docker Hub every time you push the code to GitHub (you may eg. change the message the app shows).
+  Either clone the project or copy the files to your own repository. Set up a similar deployment pipeline (or the "first half") using GitHub Actions that was just described. Ensure that a new image gets pushed to Docker Hub every time you push the code to GitHub (you may e.g. change the message the app shows).
 
-Note that there is importat change that you should make to the above workflow configuration, the branch should be named _main_:
+Note that there is an important change that you should make to the above workflow configuration, the branch should be named _main_:
 
 ```yaml
 name: Release NodeJS app
@@ -170,7 +170,7 @@ Now your deployment pipeline is set up! Ensure that it works:
 
 :::info Exercise 3.3: Building images inside of a container
 
-  Create a now script/program that downloads a repository from GitHub, builds a Dockerfile located in the root and then publishes it into the Docker Hub.
+  Create a new script/program that downloads a repository from GitHub, builds an image from the Dockerfile located in the root and then publishes it into the Docker Hub.
 
   You can use any scripting or programming language to implement the script. Using [shell script](https://www.shellscript.sh/) might make the next exercise a bit easier... and do not worry if you have not done a shell script earlier, you do not need much for this exercise and Google helps.
 
@@ -203,7 +203,7 @@ services:
 
 Dockerize now the script you did for the previous exercise. You can use images from [this repository](https://hub.docker.com/_/docker) to run Docker inside Docker!
 
-Your Dockerized could be run like this (the command is divided into many lines for better readability, note that copy-pasting a multiline command does not work):
+Your Dockerized script could be run like this (the command is divided into many lines for better readability, note that copy-pasting a multiline command does not work):
 
 ```
 docker run -e DOCKER_USER=mluukkai \
