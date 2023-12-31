@@ -6,15 +6,15 @@ Now that we've mastered containers in small systems with Docker Compose it's tim
 
 In the scope of this course, we cannot go into how to use the tools in this section, but leaving them without a mention would be a disservice.
 
-**Docker swarm mode** is built into Docker. It turns a pool of Docker hosts into a single virtual host. You can read the feature highlights [here](https://docs.docker.com/engine/swarm/). You can run right away with `docker swarm`. Docker swarm mode is the lightest way of utilizing multiple hosts.
+**Docker swarm mode** is built into Docker. It turns a pool of Docker hosts into a single virtual host. You can read the feature highlights [here](https://docs.docker.com/engine/swarm/). You can run it right away with `docker swarm`. Docker swarm mode is the lightest way of utilizing multiple hosts.
 
 **Kubernetes** is the de facto way of orchestrating your containers in large multi-host environments. The reason being it's customizability, large community and robust features. However the drawback is the higher learning curve compared to Docker swarm mode. You can read their introduction [here](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/).
 
-It is always good to remember that a singe tool is rarely an optimal solution for all the possible scenarios. In a 2-3 host environment for a hobby project the gains from Kubernetes might not be as large compared to a environment where you need to orchestrate hundreds of hosts with multiple containers each.
+It is always good to remember that a single tool is rarely an optimal solution for all the possible scenarios. In a 2-3 host environment for a hobby project the gains from Kubernetes might not be as large compared to a environment where you need to orchestrate hundreds of hosts with multiple containers each.
 
-You can get to know Kubernetes with [k3s](https://k3s.io/) a lightweight Kubernetes distribution which you can run inside containers with [k3d](https://github.com/rancher/k3d). This is a great way to get started as you don't have to worry about complicated setup or any credit limits that the cloud providers alvays have.
+You can get to know Kubernetes with [k3s](https://k3s.io/), a lightweight Kubernetes distribution which you can run inside containers with [k3d](https://github.com/rancher/k3d). This is a great way to get started as you don't have to worry about complicated setup or any credit limits that the cloud providers always have.
 
-Rather than maintaining one yourself the most common way to use Kubernetes is by using a managed service by a cloud provider. Such as Google Kubernetes Engine (GKE) or Amazon Elastic Kubernetes Service (Amazon EKS) which are both offering some credits to get started.
+Rather than maintaining one yourself, the most common way to use Kubernetes is by using a managed service by a cloud provider, such as Google Kubernetes Engine (GKE) or Amazon Elastic Kubernetes Service (Amazon EKS), which both offer some credits to get started.
 
 ## Exercise 3.11
 
