@@ -108,7 +108,7 @@ rm -rf /var/lib/apt/lists/*
 
 ## Alpine Linux variant ##
 
-Our Ubuntu base image adds the most megabytes to our image. [Alpine Linux](https://www.alpinelinux.org/) provides a popular alternative base in https://hub.docker.com/_/alpine/ that is around 4 megabytes. It's based on an altenative glibc implementation called musl, and BusyBox binaries, so not all software run well (or at all) with it, but our container should run just fine. We'll create the following `Dockerfile.alpine` file:
+Our Ubuntu base image adds the most megabytes to our image. [Alpine Linux](https://www.alpinelinux.org/) provides a popular alternative base in https://hub.docker.com/_/alpine/ that is around 4 megabytes. It's based on an alternative glibc implementation called musl, and BusyBox binaries, so not all software run well (or at all) with it, but our container should run just fine. We'll create the following `Dockerfile.alpine` file:
 
 ```dockerfile
 FROM alpine:3.13
