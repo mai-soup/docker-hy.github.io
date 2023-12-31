@@ -36,7 +36,7 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/youtube-dl"]
 ```
 
-**133MB**
+**156MB**
 
 As was said each command that is executed to the base image, forms an layer. Command here refers to one Dockerfile directive such as `RUN`. We could now glue all `RUN` commands together to reduce the number of layers that are created when building the image:
 
@@ -58,21 +58,21 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/youtube-dl"]
 ```
 
-**133MB**
+**154MB**
 
 There is not that much difference, the image with less layers is 2 MB smaller.
 
 As a sidenote not directly related to Docker: remember that if needed, it is possible to bind packages to versions with `curl=1.2.3` - this will ensure that if the image is built at the later date the image is more likely to work as the versions are exact. On the other hand, the packages will be old and have security issues.
 
-With `docker image history` we can see that our single `RUN` layer adds 76.7 megabytes to the image:
+With `docker image history` we can see that our single `RUN` layer adds 91.1 megabytes to the image:
 
 ```console
-$ docker image history youtube-dl
+$ docker image history ytdl-run
 
-  IMAGE          CREATED              CREATED BY                                      SIZE      COMMENT
-  f221975422c3   About a minute ago   /bin/sh -c #(nop)  ENTRYPOINT ["/usr/local/b…   0B
-  940a7510dc5d   About a minute ago   /bin/sh -c #(nop)  USER appuser                 0B
-  31062eddb851   About a minute ago   /bin/sh -c apt-get update && apt-get install…   76.7MB
+IMAGE          CREATED              CREATED BY                                      SIZE      COMMENT
+4365f243705e   About a minute ago   /bin/sh -c #(nop)  ENTRYPOINT ["/usr/local/b…   0B
+9cff7b16ac6b   About a minute ago   /bin/sh -c #(nop)  USER appuser                 0B
+0dc004e54362   About a minute ago   /bin/sh -c apt-get update && apt-get install…   91.1MB
   ...
 ```
 
@@ -83,7 +83,7 @@ The next step is to remove everything that is not needed in the final image. We 
 rm -rf /var/lib/apt/lists/*
 ````
 
-Now, after we build, the size of the layer is 100 megabytes. We can optimize even further by removing the `curl`. We can remove `curl` and all the dependencies it installed with
+Now, after we build, the size of the image is 109 megabytes. We can optimize even further by removing `curl`. We can remove `curl` and all the dependencies it installed with
 
 ```console
 .. && \
@@ -91,7 +91,7 @@ apt-get purge -y --auto-remove curl && \
 rm -rf /var/lib/apt/lists/*
 ````
 
-... which brings us down to 94 MB.
+...which brings us down to 102 MB.
 
 ## Exercise 3.6
 
